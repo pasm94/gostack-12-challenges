@@ -24,5 +24,23 @@
       "available": true,
       "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food3.png"
     }
+  ],
+  "drinks": [
+    {
+      "id": 1,
+      "name": "Azeitini",
+      "description": "Parece Martini, mas é só água com azeitona",
+      "price": "1.99",
+      "available": true,
+      "image": "https://cdn.pixabay.com/photo/2013/07/12/19/19/martini-154548_960_720.png"
+    },
+    {
+      "id": 2,
+      "name": "Gasolina adulterada",
+      "description": "Saboroso chá de procedência duvidosa.",
+      "price": "4.65",
+      "available": true,
+      "image": "https://cdn.pixabay.com/photo/2020/08/19/17/48/disposable-5501650_960_720.jpg"
+    }
   ]
 }

@@ -10,10 +10,15 @@ export const Container = styled.div`
     padding: 0 0 160px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: space-between; */
 
     nav {
+      padding-left: 500px;
       div {
+        a {
+          text-decoration: none;
+        }
+
         button {
           font-weight: 600;
           border-radius: 8px;
@@ -38,6 +43,10 @@ export const Container = styled.div`
           }
         }
       }
+    }
+
+    nav ~ nav {
+      padding-left: 40px;
     }
   }
 `;
