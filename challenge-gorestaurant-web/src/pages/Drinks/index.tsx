@@ -4,7 +4,7 @@ import Header from '../../components/Header';
 
 import api from '../../services/api';
 
-import Food from '../../components/Food';
+import Food from '../../components/Drink';
 import ModalAddFood from '../../components/ModalAddFood';
 import ModalEditFood from '../../components/ModalEditFood';
 
@@ -28,7 +28,7 @@ const Dashboard: React.FC = () => {
   useEffect(() => {
     async function loadFoods(): Promise<void> {
       // TODO LOAD FOODS
-      api.get('/foods').then(response => {
+      api.get('/drinks').then(response => {
         setFoods(response.data);
       });
     }
@@ -40,7 +40,7 @@ const Dashboard: React.FC = () => {
   ): Promise<void> {
     try {
       // TODO ADD A NEW FOOD PLATE TO THE API
-      const response = await api.post('/foods', {
+      const response = await api.post('/drinks', {
         ...food,
         available: true,
       });
@@ -56,7 +56,7 @@ const Dashboard: React.FC = () => {
   ): Promise<void> {
     // TODO UPDATE A FOOD PLATE ON THE API
     try {
-      const response = await api.put(`/foods/${editingFood.id}`, {
+      const response = await api.put(`/drinks/${editingFood.id}`, {
         ...editingFood,
         ...food,
       });
@@ -71,7 +71,7 @@ const Dashboard: React.FC = () => {
 
   async function handleDeleteFood(id: number): Promise<void> {
     // TODO DELETE A FOOD PLATE FROM THE API
-    await api.delete(`/foods/${id}`);
+    await api.delete(`/drinks/${id}`);
 
     const attFoods = foods.filter(food => food.id !== id);
     setFoods(attFoods);
@@ -93,9 +93,9 @@ const Dashboard: React.FC = () => {
 
   return (
     <>
-      <Header openModal={toggleModal} page="dashboard" />
+      <Header openModal={toggleModal} page="drinks" />
       <ModalAddFood
-        page="dashboard"
+        page="drinks"
         isOpen={modalOpen}
         setIsOpen={toggleModal}
         handleAddFood={handleAddFood}

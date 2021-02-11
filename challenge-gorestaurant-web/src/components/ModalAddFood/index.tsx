@@ -26,12 +26,14 @@ interface ICreateFoodData {
 interface IModalProps {
   isOpen: boolean;
   setIsOpen: () => void;
+  page: string;
   handleAddFood: (food: Omit<IFoodPlate, 'id' | 'available'>) => void;
 }
 
 const ModalAddFood: React.FC<IModalProps> = ({
   isOpen,
   setIsOpen,
+  page,
   handleAddFood,
 }) => {
   const formRef = useRef<FormHandles>(null);
@@ -47,21 +49,40 @@ const ModalAddFood: React.FC<IModalProps> = ({
 
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
-      <Form ref={formRef} onSubmit={handleSubmit}>
-        <h1>Novo Prato</h1>
-        <Input name="image" placeholder="Cole o link aqui" />
+      {page === 'dashboard' && (
+        <Form ref={formRef} onSubmit={handleSubmit}>
+          <h1>Novo Prato</h1>
+          <Input name="image" placeholder="Cole o link aqui" />
 
-        <Input name="name" placeholder="Ex: Moda Italiana" />
-        <Input name="price" placeholder="Ex: 19.90" />
+          <Input name="name" placeholder="Ex: Moda Italiana" />
+          <Input name="price" placeholder="Ex: 19.90" />
 
-        <Input name="description" placeholder="Descrição" />
-        <button type="submit" data-testid="add-food-button">
-          <p className="text">Adicionar Prato</p>
-          <div className="icon">
-            <FiCheckSquare size={24} />
-          </div>
-        </button>
-      </Form>
+          <Input name="description" placeholder="Descrição" />
+          <button type="submit" data-testid="add-food-button">
+            <p className="text">Adicionar Prato</p>
+            <div className="icon">
+              <FiCheckSquare size={24} />
+            </div>
+          </button>
+        </Form>
+      )}
+      {page === 'drinks' && (
+        <Form ref={formRef} onSubmit={handleSubmit}>
+          <h1>Novo Drink</h1>
+          <Input name="image" placeholder="Cole o link aqui" />
+
+          <Input name="name" placeholder="Ex: Caipirinha" />
+          <Input name="price" placeholder="Ex: 8.90" />
+
+          <Input name="description" placeholder="Descrição" />
+          <button type="submit" data-testid="add-food-button">
+            <p className="text">Adicionar Drink</p>
+            <div className="icon">
+              <FiCheckSquare size={24} />
+            </div>
+          </button>
+        </Form>
+      )}
     </Modal>
   );
 };
